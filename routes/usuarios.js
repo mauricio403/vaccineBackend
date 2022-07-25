@@ -16,12 +16,16 @@ const { usuariosGet,
     usuariosPut,
     usuariosPost,
     usuariosDelete,
-    usuariosPatch } = require('../controllers/usuarios');
+    usuariosPatch,
+    getUserByUid
+ } = require('../controllers/usuarios');
 
 const router = Router();
 
 
 router.get('/', usuariosGet);
+
+router.get('/:id', getUserByUid);
 
 router.put('/:id', [
     check('id', 'No es un ID válido').isMongoId(),
