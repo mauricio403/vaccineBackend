@@ -31,6 +31,13 @@ const getUserByUid = async (req, res = response) => {
     const { id } = req.params;
     const usuario = await Usuario.findById(id);
 
+    if (!usuario) {
+        return res.status(404).json({
+            ok: false,
+            msg: 'Usuario no encontrado'
+        });
+    }
+
     res.json(usuario);
 
 }
